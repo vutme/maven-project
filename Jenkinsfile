@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
          string(name: 'tomcat_dev', defaultValue: '18.219.50.206', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '18.219.50.206', description: 'Production Server')
+         
     }
 
     triggers {
@@ -31,11 +31,7 @@ stages{
                     }
                 }
 
-                stage ("Deploy to Production"){
-                    steps {
-                        sh "scp -i C:/Users/VamsLocal/Downloads/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
-                    }
-                }
+               
             }
         }
     }
